@@ -1,44 +1,42 @@
-<h1>spanr</h1>
 
-<div class>
-  <div class="jumbotron">
-    <h3>Book your plumber or electrician</h3>
-    <h4>See their availabilities</h4>
-    <% unless user_signed_in? %>
-      <h4>
-        Are you a tradesman?
-        <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary btn-sm' %>
-        or
-        <%= link_to "Sign in", new_user_session_path, class: 'btn btn-primary btn-sm' %>
-      </h4>
-    <% end %>
-  </div>
-</div>
-
-<div class="container">
-  <div class="row">
-    <h3><center>Select a tradesman to book an appointment</center></h3>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
     <br>
-    <div class="col-md-4 text-center col-md-offset-2 card">
-      <h4>Mario the Plumber</h4>
+    <div class="jumbotron">
+      <h3>Book your plumber or electrician</h3>
+      <h4>See their availabilities</h4>
       <br>
-      <div>
-        <%= link_to root_path do %>
-          <%= image_tag "mario.png", class: "div1" %>
-        <% end %>
-      </div>
-      <br>
+      <% unless user_signed_in? %>
+        <h4>
+          Are you a tradesman?
+          <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary btn-sm' %>
+          or
+          <%= link_to "Sign in", new_user_session_path, class: 'btn btn-primary btn-sm' %>
+        </h4>
+      <% end %>
     </div>
 
-    <div class="col-md-4 text-center card">
-      <h4>Sparky the Electrician</h4>
+    <div class="row">
+      <h3><center>Select a tradesman to book an appointment</center></h3>
       <br>
-      <div>
-        <%= link_to root_path do %>
-          <%= image_tag "emmet.jpg", class: "div1" %>
-        <% end %>
-      </div>
-      <br>
+      <% @companies.each do |company| %>
+        <div class="col-md-offset-2">
+          <div class="col-md-4 text-center card">
+            <%= link_to company_path(company) do %>
+              <h4><%= company.name %></h4>
+              <br>
+              <div>
+                  <% if company.id == 1 %>
+                    <%= image_tag "mario.png", class: "div1" %>
+                  <% elsif company.id == 2 %>
+                    <%= image_tag "emmet.jpg", class: "div1" %>
+                  <% end %>
+              </div>
+              <br>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

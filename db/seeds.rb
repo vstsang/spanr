@@ -44,5 +44,12 @@ Company.create!(
         booking_id: rand(Booking.all.count)
       )
     end
+
+    5.times do |i|
+      @user.availabilities.create!(
+        start_time: day_start + 1.days + i.hour,
+        booking_id: rand(Booking.all.count)
+      )
+    end
   end
 end

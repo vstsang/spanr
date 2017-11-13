@@ -1,0 +1,39 @@
+
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <%#= form_for(timeslot) do |f| %>
+
+    <div class="form-group">
+      <%#= f.label :start_at %>
+
+        <div class='input-group date' id='datetimepicker1'>
+          <%#= f.text_field :start_at, :class => "form-control" %>
+            <span class="input-group-addon">
+                <span class="glyphicon glyphicon-calendar"></span>
+            </span>
+        </div>
+    </div>
+    <%# end %>
+    <script type="text/javascript">
+        date = $(function () {
+            $('#datetimepicker1').datetimepicker({
+              daysOfWeekDisabled: [0, 6],
+              format: 'DD/MM/YYYY',
+              inline: true
+            });
+        });
+    </script>
+  </div>
+  <div class="col-md-5">
+    <%= link_to "request", @company, class: 'btn btn-primary', remote: true %>
+    <p id="here"></p>
+    <%# @timeslots.each do |timeslot| %>
+      <div class='btn btn-primary btn-sm'>
+        <%# timeslot.start_time.strftime("%I:%M %p") %>
+
+        <%#= link_to "Sign up", new_user_registration_path, class: 'btn btn-basic btn-sm' %>
+      </div>
+      <%#
+       end %>
+  </div>
+</div>

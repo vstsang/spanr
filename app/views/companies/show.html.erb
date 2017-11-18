@@ -1,19 +1,37 @@
 <div class="row">
   <div class="col-md-5 col-md-offset-1">
-    <div class="col-md-3 col-md-offset-1">
+    <div class="col-md-offset-1">
       <div class="form-group">
-          <div class='input-group date' id='datepicker'>
-            <span class="input-group-addon">
-              <%= f.label :date %><br />
-              <%= f.datetime_select :date %>
-              <%= javascript_include_tag( 'datepicker.js' ) %>
-            </span>
-          </div>
+        <div id='datepicker'>
+          <%= javascript_include_tag( 'datepicker.js' ) %>
+        </div>
       </div>
     </div>
   </div>
-  <div class="col-md-5">
-    <%= link_to "request", @company, class: 'btn btn-primary', remote: true %>
-    <p id="here"></p>
+  <div class="col-md-3 col-md-offset-1">
+      <div class="well well-sm text-center h4">
+        <span id="pick_a_date"></span>
+      </div>
+      <div id="slots" class="text-center">
+      </div>
   </div>
 </div>
+
+<script>
+  $(document).ready(function(){
+    $('#datepicker').on('dp.change', function(e){
+      $.ajax({
+        type: "GET",
+        url: '/select_slots',
+        data: {
+          date: {
+            company_id: <%= @company.id %>,
+            date: e.date._d
+          }
+        }
+      })
+    })
+  })
+
+  $('#pick_a_date').text("Pick a date to book")
+</script>

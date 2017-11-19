@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   resources :companies, only: [:show]
 
-  #resources :bookings, only: [:new, :create, :destroy]
+  resources :bookings, only: [:create, :destroy]
 
   get :select_slots, to: 'companies#select_slots'
 

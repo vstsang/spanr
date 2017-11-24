@@ -39,6 +39,6 @@ class BookingsController < ApplicationController
       flash.now[:alert] = "There was an error deleting the booking. Please try again."
       #render :show
     end
-  end
 =end
+  end
 end

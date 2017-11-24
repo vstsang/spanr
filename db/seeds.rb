@@ -27,13 +27,22 @@ Company.create!(
     role: rand(1..2),
     timeslot_duration: 1.hour,
     company_id: rand(1..Company.all.count),
-    password: 'password'
+    password: 'password',
+    confirmed_at: Time.now.utc
   )
 
   if @user.customer?
     5.times do
       @user.bookings.create!(
-        notes: Faker::BackToTheFuture.quote,
+=begin
+        first_name: Faker::Name.first_name,
+        last_name: Faker::Name.last_name,
+        address: [Faker::Address.street_address, Faker::Address.city, Faker::Address.zip_code, Faker::Address.country].join(' '),
+        mobile: Faker::PhoneNumber.cell_phone,
+        email: Faker::Internet.email,
+        timeslot: Timeslot.find(rand(1..Timeslot.count)),
+=end        
+        notes: Faker::BackToTheFuture.quote
       )
     end
   end

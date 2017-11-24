@@ -5,7 +5,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   belongs_to :company
-  has_many :availabilities, :class_name => 'Timeslot', :foreign_key => 'tradesman_id'
+  has_many :timeslots, :class_name => 'Timeslot', :foreign_key => 'tradesman_id'
   has_many :bookings, :class_name => 'Booking', :foreign_key => 'customer_id'
 
   enum role: [:admin, :customer, :tradesman]

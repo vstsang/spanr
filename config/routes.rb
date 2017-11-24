@@ -1,9 +1,9 @@
 Rails.application.routes.draw do
   devise_for :users
 
-  resources :companies, only: [:show]
-
-  resources :bookings, only: [:create, :destroy]
+  resources :companies, only: [:show] do
+    resources :bookings, only: [:new, :create, :destroy]
+  end
 
   get :select_slots, to: 'companies#select_slots'
 

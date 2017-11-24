@@ -1,10 +1,7 @@
 $('#pick_a_date').text("<%= @selected_date.strftime('%A, %v') %>")
 
-//$('#slots').text("number of slots <%= @timeslots.count%>")
 $('#slots').empty()
 
 <% @timeslots.each do |t| %>
-//  $('#slots').append(" <p><%= t.start_time.strftime('%I: %M %p')%></p> ")
-//  $('#slots').append(" <p><%= link_to t.start_time.strftime('%I: %M %p'), root_path, class: 'btn btn-success' %></p> ")
   $('#slots').append(" <%= j render partial: 'slots', locals: {t: t} %> ")
 <% end %>

@@ -16,8 +16,12 @@ class BookingsController < ApplicationController
     @timeslot = Timeslot.find(params[:booking][:timeslot_id])
     @timeslot.booking = @booking
 
+    @booking.first_name = params[:booking][:first_name]
+    @booking.last_name = params[:booking][:last_name]
+    @booking.email = params[:booking][:email]
+    @booking.mobile = params[:booking][:mobile]
     @booking.notes = params[:booking][:notes]
-    @booking.customer_id = 1
+    #@booking.customer_id = 1
 
     if @booking.save
       flash[:notice] = "Booking was saved."

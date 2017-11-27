@@ -3,13 +3,47 @@
 </h4>
 
 <%= form_for [@company, @booking] do |f| %>
-  <div class='form-group'>
-    <%= f.label :notes %>
-    <%= f.text_area :notes, rows: 3, class: 'form-control', placeholder: "Enter job information"%>
-    <%= f.hidden_field :timeslot_id, :value => @timeslot.id %>
-  </div>
+  <div class="form-horizontal">
+    <div class='form-group'>
+      <%= f.label :first_name, class: "control-label col-sm-2" %>
+      <div class='col-sm-6'>
+        <%= f.text_field :first_name, class: 'form-control' %>
+      </div>
+    </div>
 
-  <div class='form-group'>
-    <%= f.submit 'Ok', class: 'btn btn-success' %>
+    <div class='form-group'>
+      <%= f.label :last_name, class: "control-label col-sm-2" %>
+      <div class='col-sm-6'>
+        <%= f.text_field :last_name, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :email, class: "control-label col-sm-2" %>
+      <div class='col-sm-6'>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :mobile, class: "control-label col-sm-2" %>
+      <div class='col-sm-6'>
+        <%= f.text_field :mobile, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <%= f.label :notes, class: "control-label col-sm-2"  %>
+      <div class='col-sm-6'>
+        <%= f.text_area :notes, rows: 3, class: 'form-control col-sm-6', placeholder: "Enter job information"%>
+        <%= f.hidden_field :timeslot_id, :value => @timeslot.id %>
+      </div>
+    </div>
+
+    <div class='form-group'>
+      <div class="col-sm-8">
+        <%= f.submit 'Book appointment', class: 'btn btn-success pull-right' %>
+      </div>
+    </div>
   </div>
 <% end %>

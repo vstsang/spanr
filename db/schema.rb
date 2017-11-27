@@ -14,6 +14,11 @@
 ActiveRecord::Schema.define(version: 20171106113722) do
 
   create_table "bookings", force: :cascade do |t|
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "address"
+    t.string   "email"
+    t.string   "mobile"
     t.text     "notes"
     t.integer  "customer_id"
     t.datetime "created_at",  null: false

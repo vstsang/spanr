@@ -11,7 +11,8 @@ class CompaniesController < ApplicationController
     company = Company.find(params[:date][:company_id])
 
     # dev note: limits to one tradesman per company for now
-    @timeslots = Timeslot.where(tradesman: company.users.tradesman.first).where(start_time: @selected_date.beginning_of_day..@selected_date.end_of_day)
+    @timeslots_morning = Timeslot.where(tradesman: company.users.tradesman.first).where(start_time: @selected_date.beginning_of_day...@selected_date.at_midday)
+    @timeslots_afternoon = Timeslot.where(tradesman: company.users.tradesman.first).where(start_time: @selected_date.at_midday..@selected_date.end_of_day)
 
     respond_to do |format|
       format.js

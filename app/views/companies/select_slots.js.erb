@@ -2,6 +2,4 @@ $('#pick_a_date').text("<%= @selected_date.strftime('%A, %v') %>")
 
 $('#slots').empty()
 
-<% @timeslots.each do |t| %>
-  $('#slots').append(" <%= j render partial: 'slots', locals: {t: t} %> ")
-<% end %>
+$('#slots').append(" <%= j render partial: 'slots', locals: {timeslots_morning: @timeslots_morning, timeslots_afternoon: @timeslots_afternoon} %> ")

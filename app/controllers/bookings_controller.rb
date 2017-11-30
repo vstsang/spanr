@@ -23,14 +23,14 @@ class BookingsController < ApplicationController
 
     @booking.first_name = params[:booking][:first_name]
     @booking.last_name = params[:booking][:last_name]
+    @booking.address = params[:booking][:address]
     @booking.email = params[:booking][:email]
     @booking.mobile = params[:booking][:mobile]
     @booking.notes = params[:booking][:notes]
     #@booking.customer_id = 1
 
     if @booking.save
-      flash[:notice] = "Booking was saved."
-      redirect_to @company
+      redirect_to [@company, @booking]
     else
       flash.now[:alert] = "There was an error saving the booking. Please try again."
       render :new

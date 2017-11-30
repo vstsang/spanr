@@ -16,7 +16,7 @@
         <div class="navbar-brand">
           <% if current_page?(root_path) %>
             <li><%= link_to "spanr", root_path %></li>
-          <% elsif current_page?(company_path) %>
+          <% else %>
             <li><%= link_to @company.name, company_path %></li>
           <% end %>
         </div>

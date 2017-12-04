@@ -1,5 +1,5 @@
 trade = ['electrician', 'plumber']
-day_start = Time.zone.local(2017, 11, 3, 9, 0)
+day_start = Time.zone.local(2017, 12, 1, 9, 0)
 today_start = Time.zone.today + 9.hours
 
 Company.create!(

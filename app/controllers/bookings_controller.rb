@@ -16,18 +16,10 @@ class BookingsController < ApplicationController
 
   def create
     @company = Company.find(params[:company_id])
-    @booking = Booking.new
+    @booking = Booking.new(booking_params)
 
     @timeslot = Timeslot.find(params[:booking][:timeslot_id])
     @timeslot.booking = @booking
-
-    @booking.first_name = params[:booking][:first_name]
-    @booking.last_name = params[:booking][:last_name]
-    @booking.address = params[:booking][:address]
-    @booking.email = params[:booking][:email]
-    @booking.mobile = params[:booking][:mobile]
-    @booking.notes = params[:booking][:notes]
-    #@booking.customer_id = 1
 
     if @booking.save
       redirect_to [@company, @booking]
@@ -49,5 +41,11 @@ class BookingsController < ApplicationController
       #render :show
     end
 =end
+  end
+
+  private
+
+  def booking_params
+    params.require(:booking).permit(:first_name, :last_name, :address, :mobile, :email, :notes)
   end
 end

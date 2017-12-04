@@ -1,19 +1,20 @@
 <div class="col-md-6">
   <% @timeslots_morning.each do |t| %>
     <% if t.booking_id.nil?  %>
-      <p><%= link_to t.start_time.strftime('%I:%M %p'), new_company_booking_path( {company_id: t.tradesman.company_id, timeslot_id: t.id} ), id: 'slot-btn', class: 'btn btn-success', remote: true %></p>
+      <p><%= link_to t.start_time.strftime('%I:%M %p'), new_company_booking_path( {company_id: t.tradesman.company_id, timeslot_id: t.id} ), id: "slot-btn", class: 'btn btn-success', remote: true %></p>
     <% end %>
   <% end %>
 </div>
 <div class="col-md-offset-6">
   <% @timeslots_afternoon.each do |t| %>
     <% if t.booking_id.nil?  %>
-      <p><%= link_to t.start_time.strftime('%I:%M %p'), new_company_booking_path( {company_id: t.tradesman.company_id, timeslot_id: t.id} ), id: 'slot-btn', class: 'btn btn-success', remote: true %></p>
+      <p><%= link_to t.start_time.strftime('%I:%M %p'), new_company_booking_path( {company_id: t.tradesman.company_id, timeslot_id: t.id} ), id: "slot-btn", class: 'btn btn-success', remote: true %></p>
     <% end %>
   <% end %>
 </div>
 <script>
-  ('#slot-btn').click(function(e) {
-    console.log(e.target);
+  $('.btn').click(function(e) {
+    $('.btn').removeClass('btn-success').addClass('btn-success');
+    $(this).addClass('btn-primary').removeClass('btn-success');
   });
 </script>

@@ -72,15 +72,15 @@
           </table>
         </div>
       </div>
+      <div class="pull-right btn-group btn-group-xs">
+        <%= link_to "Reschedule booking", [@company, @booking], method: :delete, class: 'btn btn-info', data: {confirm: "Delete booking?"} %>
+        <%= link_to "Cancel booking", [@company, @booking], method: :delete, class: 'btn btn-warning', data: {confirm: "Cancel booking?"} %>
+      </div>
     </div>
   </div>
   <div class="col-md-10 col-md-offset-1">
     <div class="col-md-6">
-      <p>A confirmation email will be sent to you shortly.</p>
-      <br>
-      <p>You can cancel your appointment #here if required.</p>
-      <br>
-      <%= link_to "Add to Google Calendar", root_path, class: 'btn btn-success' %>
+      <p><%= link_to "Add to Google Calendar", root_path, class: 'btn btn-xs btn-success' %></p>
     </div>
   </div>
 </div>

@@ -30,17 +30,16 @@ class BookingsController < ApplicationController
   end
 
   def destroy
-=begin
+    @company = Company.find(params[:company_id])
     @booking = Booking.find(params[:id])
 
     if @booking.destroy
       flash[:notice] = "Booking was deleted successfully."
-      redirect_to :back
+      redirect_to company_path(@company)
     else
       flash.now[:alert] = "There was an error deleting the booking. Please try again."
-      #render :show
+      render :show
     end
-=end
   end
 
   private

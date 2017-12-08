@@ -8,6 +8,6 @@ class CreateTimeslots < ActiveRecord::Migration
 
       t.timestamps null: false
     end
-    add_foreign_key :bookings, :users, column: :tradesman_id
+    add_foreign_key :timeslots, :users, column: :tradesman_id
   end
 end

@@ -19,11 +19,11 @@ group :development, :test do
   gem 'rspec-rails', '~> 3.0'
   gem 'shoulda'
   gem 'pry-rails'
-  gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
   #gem 'factory_girl_rails', '~> 4.0'
   #gem 'mailcatcher'
 end
 
+gem 'faker', :git => 'git://github.com/stympy/faker.git', :branch => 'master'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'

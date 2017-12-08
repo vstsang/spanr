@@ -1,0 +1,5 @@
+<h4 class="well well-sm">
+  <%= "Appointment selected: " %><small><%= @timeslot.start_time.strftime('%A, %d %B %Y - %I:%M %p') %></small>
+</h4>
+
+<%= link_to "Confirm reschedule", reschedule_save_path( {company_id: @company.id, timeslot_id: @timeslot.id, current_booking_id: @current_booking.id} ), class: 'btn btn-info pull-right' %>

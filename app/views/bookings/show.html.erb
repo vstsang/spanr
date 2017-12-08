@@ -73,8 +73,8 @@
         </div>
       </div>
       <div class="pull-right btn-group btn-group-xs">
-        <%= link_to "Reschedule booking", [@company, @booking], method: :delete, class: 'btn btn-info', data: {confirm: "Delete booking?"} %>
-        <%= link_to "Cancel booking", [@company, @booking], method: :delete, class: 'btn btn-warning', data: {confirm: "Cancel booking?"} %>
+        <%= link_to "Reschedule booking", edit_company_booking_path(@company, @booking), class: 'btn btn-info' %>
+        <%= link_to "Cancel booking", [@company, @booking], method: :delete, class: 'btn btn-warning', data: { confirm: "Cancel booking?" } %>
       </div>
     </div>
   </div>

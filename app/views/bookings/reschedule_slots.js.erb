@@ -1,0 +1,5 @@
+$('#pick_a_date').text("<%= @selected_date.strftime('%A, %v') %>")
+
+$('#slots').empty()
+
+$('#slots').append(" <%= j render partial: 'reschedule_slots', locals: {timeslots_morning: @timeslots_morning, timeslots_afternoon: @timeslots_afternoon} %> ")

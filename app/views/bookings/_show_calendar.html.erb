@@ -1,0 +1,43 @@
+<div class="row">
+  <div class="col-md-5 col-md-offset-1">
+    <div class="col-md-offset-1">
+      <div class="form-group">
+        <div id='datepicker'>
+          <%= javascript_include_tag( 'datepicker.js' ) %>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-4 col-md-offset-1">
+      <div class="well well-sm text-center h4">
+        <span id="pick_a_date"></span>
+      </div>
+      <div id="slots" class="text-center">
+      </div>
+  </div>
+</div>
+<div class="row">
+  <div class="col-md-10 col-md-offset-1">
+    <div id="job_info"><div>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    $('#datepicker').on('dp.change', function(e){
+      $.ajax({
+        type: "GET",
+        url: '/reschedule_slots',
+        data: {
+          date: {
+            company_id: <%= @company.id %>,
+            current_booking_id: <%= @booking.id %>,
+            date: e.date._d
+          }
+        }
+      })
+    })
+  })
+
+  $('#pick_a_date').text("Pick a date to book")
+</script>

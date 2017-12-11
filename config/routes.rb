@@ -13,5 +13,9 @@ Rails.application.routes.draw do
 
   get :reschedule_save, to: 'bookings#reschedule_save'
 
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
+
   root 'welcome#index'
 end

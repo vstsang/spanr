@@ -1,4 +1,4 @@
-if Rails.env.development? || Rails.env.production?
+if Rails.env.production?
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
     address:        'smtp.sendgrid.net',
@@ -9,4 +9,6 @@ if Rails.env.development? || Rails.env.production?
     domain:         'heroku.com',
     enable_starttls_auto: true
   }
+elsif Rails.env.development?
+  ActionMailer::Base.delivery_method = :letter_opener_web
 end

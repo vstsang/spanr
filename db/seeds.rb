@@ -31,19 +31,6 @@ Company.create!(
     confirmed_at: Time.now.utc
   )
 
-  if @user.customer?
-    5.times do
-      @user.bookings.create!(
-        first_name: Faker::Name.first_name,
-        last_name: Faker::Name.last_name,
-        address: [Faker::Address.street_address, Faker::Address.city, Faker::Address.zip_code, Faker::Address.country].join(' '),
-        mobile: Faker::PhoneNumber.cell_phone,
-        email: Faker::Internet.email,
-        notes: Faker::BackToTheFuture.quote
-      )
-    end
-  end
-
   if @user.tradesman?
     8.times do |i|
       @user.timeslots.create!(

@@ -1,0 +1,80 @@
+
+ <!DOCTYPE html>
+<html>
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <link href="https://fonts.googleapis.com/css?family=Roboto:400,700" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Roboto', sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <p>Hi <%= @customer_first_name %>,</p>
+
+    <p>Thank you for choosing <strong><%= @company_name %></strong>, your booking is confirmed.</p>
+
+    <h4>Booking Summary</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Date</strong></td>
+          <td><%= @date %></td>
+        </tr>
+        <tr>
+          <td><strong>Time</strong></td>
+          <td><%= @time %></td>
+        </tr>
+        <tr>
+          <td><strong>Your name</strong></td>
+          <td><%= @customer_full_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Your address</strong></td>
+          <td><%= @customer_address %></td>
+        </tr>
+        <tr>
+          <td><strong>Your email</strong></td>
+          <td><%= @customer_email %></td>
+        </tr>
+        <tr>
+          <td><strong>Your mobile</strong></td>
+          <td><%= @customer_mobile %></td>
+        </tr>
+        <tr>
+          <td><strong>Notes</strong></td>
+          <td><%= @notes %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h4>Company Information</h4>
+    <table>
+      <tbody>
+        <tr>
+          <td><strong>Company</strong></td>
+          <td><%= @company_name %></td>
+        </tr>
+        <tr>
+          <td><strong>Address</strong></td>
+          <td><%= @company_address %></td>
+        </tr>
+        <tr>
+          <td><strong>Email</strong></td>
+          <td><%= @company_email %></td>
+        </tr>
+        <tr>
+          <td><strong>Phone</strong></td>
+          <td><%= @company_phone %></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <p><%= link_to "Reschedule booking", edit_company_booking_url(@company, @booking), class: 'btn btn-info' %></p>
+    <p><%= link_to "Cancel booking", company_booking_url(@company, @booking) %></p>
+
+    <p><%= link_to "Add to Google Calendar", root_path, class: 'btn btn-xs btn-success' %></p>
+    <p><%= link_to "Add to Outlook", root_path, class: 'btn btn-xs btn-success' %></p>
+  </body>
+</html>

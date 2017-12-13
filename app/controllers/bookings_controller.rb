@@ -43,7 +43,12 @@ class BookingsController < ApplicationController
 
     if  @booking.destroy
       flash[:notice] = "Booking was deleted successfully."
-      redirect_to company_path(@company)
+      puts "current page is #{request.referer}"
+      if (request.referer == company_trade_view_url)
+        redirect_to company_trade_view_path(@company)
+      else
+        redirect_to company_path(@company)
+      end
     else
       flash.now[:alert] = "There was an error deleting the booking. Please try again."
       render :show
@@ -111,6 +116,13 @@ class BookingsController < ApplicationController
 
     respond_to do |format|
       format.js
+    end
+
+    def trade_booking_info
+      @company = Company.find(params[:company_id])
+      @timeslot = Timeslot.find(params[:timeslot_id])
+      @booking = @timeslot.booking
+      @booking ||= Booking.new
     end
   end
 

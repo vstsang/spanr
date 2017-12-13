@@ -1,0 +1,57 @@
+<div class="row">
+  <br>
+  <div class="col-md-8">
+    <% unless @timeslot.booking_id.nil?  %>
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>Booking Summary</h4>
+        </div>
+        <div class="panel-body">
+          <table class="table success">
+            <tbody>
+              <tr>
+                <td><strong>Date</strong></td>
+                <td><%= @booking.timeslot.start_time.strftime('%A, %v') %></td>
+              </tr>
+              <tr>
+                <td><strong>Time</strong></td>
+                <td><%= @booking.timeslot.start_time.strftime('%I:%M %p') %></td>
+              </tr>
+              <tr>
+                <td><strong>Your name</strong></td>
+                <td><%= [@booking.first_name, @booking.last_name].reject(&:empty?).join(' ') %></td>
+              </tr>
+              <tr>
+                <td><strong>Your address</strong></td>
+                <td><%= @booking.address %></td>
+              </tr>
+              <tr>
+                <td><strong>Your email</strong></td>
+                <td><%= @booking.email %></td>
+              </tr>
+              <tr>
+                <td><strong>Your mobile</strong></td>
+                <td><%= @booking.mobile %></td>
+              </tr>
+              <tr>
+                <td><strong>Notes</strong></td>
+                <td><%= @booking.notes %></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <% else %>
+        <%= render partial: 'new', locals: { company: @company, timeslot: @timeslot }%>
+      <% end %>
+    </div>
+
+  <div class="col-md-4">
+    <% unless @timeslot.booking_id.nil?  %>
+      <div class="pull-right btn-group btn-group-xs">
+        <%= link_to "Reschedule booking", edit_company_booking_path(@company, @booking), class: 'btn btn-info' %>
+        <%= link_to "Cancel booking", [@company, @booking], method: :delete, class: 'btn btn-warning', data: { confirm: "Cancel booking?" } %>
+      </div>
+    <% end %>
+  </div>
+</div>

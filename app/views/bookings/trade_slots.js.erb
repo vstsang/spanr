@@ -1,4 +1,4 @@
-$('#pick_a_date').text("Admin mode - <%= @selected_date.strftime('%v') %>")
+$('#pick_a_date').text("<%= @selected_date.strftime('%A, %v') %>")
 
 $('#slots').empty()
 

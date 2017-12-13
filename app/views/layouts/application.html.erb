@@ -16,6 +16,8 @@
         <div class="navbar-brand">
           <% if current_page?(root_path) %>
             <li><%= link_to "spanr", root_path %></li>
+          <% elsif current_page?(company_trade_view_path(@company)) %>
+              <%= link_to "#{@company.name} - Admin Mode", company_trade_view_path, :class => 'bg-danger pull-right'  %>
           <% else %>
             <li><%= @company.name %></li>
           <% end %>

@@ -1,18 +1,18 @@
 <div class="col-md-6">
   <% @timeslots_morning.each do |t| %>
     <% if t.booking_id.nil?  %>
-      <p><%= link_to t.start_time.strftime('%I:%M %p'), root_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-default', remote: true %></p>
+      <p><%= link_to t.start_time.strftime('%I:%M %p'), trade_booking_info_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-default', remote: true %></p>
     <% else %>
-      <p><%= link_to t.start_time.strftime('%I:%M %p'), root_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-warning', remote: true %></p>
+      <p><%= link_to t.start_time.strftime('%I:%M %p'), trade_booking_info_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-warning', remote: true %></p>
     <% end %>
   <% end %>
 </div>
 <div class="col-md-6">
   <% @timeslots_afternoon.each do |t| %>
     <% if t.booking_id.nil?  %>
-      <p><%= link_to t.start_time.strftime('%I:%M %p'), root_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-default', remote: true %></p>
+      <p><%= link_to t.start_time.strftime('%I:%M %p'), trade_booking_info_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-default', remote: true %></p>
     <% else %>
-      <p><%= link_to t.start_time.strftime('%I:%M %p'), root_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-warning', remote: true %></p>
+      <p><%= link_to t.start_time.strftime('%I:%M %p'), trade_booking_info_path( { company_id: t.tradesman.company_id, timeslot_id: t.id } ), class: 'btn btn-warning', remote: true %></p>
     <% end %>
   <% end %>
 </div>

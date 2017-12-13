@@ -1,0 +1,5 @@
+$('#pick_a_date').text("Admin mode - <%= @selected_date.strftime('%v') %>")
+
+$('#slots').empty()
+
+$('#slots').append(" <%= j render partial: 'trade_slots', locals: {timeslots_morning: @timeslots_morning, timeslots_afternoon: @timeslots_afternoon} %> ")

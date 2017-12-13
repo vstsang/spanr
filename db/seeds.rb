@@ -1,6 +1,7 @@
 trade = ['electrician', 'plumber']
 day_start = Time.zone.local(2017, 12, 1, 9, 0)
 today_start = Time.zone.today + 9.hours
+#User.create!(email: 'mario@spanr.com', password: 'password', role: 2, company_id: 1, confirmed_at: Time.now.utc)
 
 Company.create!(
   name: "Mario the Plumber",

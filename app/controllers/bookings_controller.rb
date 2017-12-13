@@ -1,4 +1,7 @@
 class BookingsController < ApplicationController
+  # Customer actions
+  #
+
   def show
     @booking = Booking.find(params[:id])
     @company = Company.find(params[:company_id])
@@ -85,6 +88,29 @@ class BookingsController < ApplicationController
     else
       flash.now[:alert] = "There was an error rescheduling the booking. Please try again."
       render :show
+    end
+  end
+
+  # Tradesman actions
+  #
+
+  def trade_view
+    @company = Company.find(params[:company_id])
+  end
+
+  def trade_slots
+    # receive a string with date, turn into dateime
+    # select timeslots for the selected date
+    # render a js file to pass times to client
+    @selected_date = params[:date][:date].to_datetime
+    company = Company.find(params[:date][:company_id])
+
+    # dev note: limits to one tradesman per company for now
+    @timeslots_morning = Timeslot.where(tradesman: company.users.tradesman.first).where(start_time: @selected_date.beginning_of_day...@selected_date.at_midday)
+    @timeslots_afternoon = Timeslot.where(tradesman: company.users.tradesman.first).where(start_time: @selected_date.at_midday..@selected_date.end_of_day)
+
+    respond_to do |format|
+      format.js
     end
   end
 

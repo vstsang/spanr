@@ -15,13 +15,14 @@
       <ul class="nav nav-tabs col-md-10 col-md-offset-1">
         <div class="navbar-brand">
           <% if current_page?(root_path) %>
-            <li><%= link_to "spanr", root_path %></li>
+            <li><%= link_to "spanr", root_path, class: 'btn btn-sm btn-warning'  %></li>
           <% elsif current_page?(company_trade_view_path(@company)) %>
-              <%= link_to "#{@company.name} - Admin Mode", company_trade_view_path, :class => 'bg-danger pull-right'  %>
+              <li><%= link_to "spanr", root_path, class: 'btn btn-sm btn-warning' %> - <%= link_to "#{@company.name} - Admin Mode", company_trade_view_path, class: 'bg-danger' %></li>
           <% else %>
-            <li><%= @company.name %></li>
+            <li><%= link_to "spanr", root_path, class: 'btn btn-sm btn-warning' %> - <%= @company.name %></li>
           <% end %>
         </div>
+<!--
         <div class="pull-right user-info">
           <% if current_page?(root_path) || user_signed_in? %>
             <% if user_signed_in? %>
@@ -34,6 +35,7 @@
              <% end %>
           <% end %>
          </div>
+-->
       </ul>
     </div>
 

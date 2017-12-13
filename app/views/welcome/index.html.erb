@@ -9,9 +9,12 @@
       <% unless user_signed_in? %>
         <h4>
           Are you a tradesman?
+          <small>Access your admin mode below</small>
+<!--
           <%= link_to "Sign up", new_user_registration_path, class: 'btn btn-primary btn-sm' %>
           or
           <%= link_to "Sign in", new_user_session_path, class: 'btn btn-primary btn-sm' %>
+-->
         </h4>
       <% end %>
     </div>
@@ -32,6 +35,7 @@
                     <%= image_tag "emmet.jpg", class: "div1" %>
                   <% end %>
               </div>
+              <small><%= link_to "Admin mode", company_trade_view_path(company), :class => 'btn btn-xs btn-default' %></small>
               <br>
             <% end %>
           </div>

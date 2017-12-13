@@ -1,6 +1,8 @@
 trade = ['electrician', 'plumber']
 day_start = Time.zone.local(2017, 12, 1, 9, 0)
 today_start = Time.zone.today + 9.hours
+timeslot_days = 30
+timeslot_in_day = 8
 #User.create!(email: 'mario@spanr.com', password: 'password', role: 2, company_id: 1, confirmed_at: Time.now.utc)
 
 Company.create!(
@@ -33,25 +35,12 @@ Company.create!(
   )
 
   if @user.tradesman?
-    8.times do |i|
-      @user.timeslots.create!(
-        start_time: day_start + i.hour,
-        #booking_id: rand(Booking.all.count)
-      )
-    end
-
-    8.times do |i|
-      @user.timeslots.create!(
-        start_time: day_start + 1.days + i.hour,
-        #booking_id: rand(Booking.all.count)
-      )
-    end
-
-    8.times do |i|
-      @user.timeslots.create!(
-        start_time: today_start + i.hour,
-        #booking_id: rand(Booking.all.count)
-      )
+    timeslot_days.times do |i|
+      timeslot_in_day.times do |j|
+        @user.timeslots.create!(
+          start_time: day_start + i.day + j.hour,
+        )
+      end
     end
   end
 end
